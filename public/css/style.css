@@ -1,0 +1,22 @@
+html {
+  background-color: #f0f5f9;
+}
+
+/* .panel .panel-heading {
+  background-color: #c9d6df;
+} */
+
+.panel-block {
+  flex-direction: column;
+  align-items: flex-end;
+  background: white;
+}
+
+.navbar {
+  margin-top: -1.5rem;
+  background-color: transparent;
+}
+
+.navbar-item img {
+  max-height: unset;
+}

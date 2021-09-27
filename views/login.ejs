@@ -1,0 +1,36 @@
+<%- include('templates/header.ejs')%>
+<section class="hero">
+  <div class="hero-body">
+    <div class="has-text-centered">
+      <img src="https://i.imgur.com/Tc9w1sh.png" alt="logo" />
+    </div>
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8-tablet is-8-desktop is-5-widescreen">
+          <form action="/login" method="post" class="box">
+            <div class="field">
+              <label for="" class="label">Username</label>
+              <div class="control">
+                <input name="username" type="text" placeholder="davidbowie" class="input" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="" class="label">Password</label>
+              <div class="control">
+                <input name="password" type="password" placeholder="*******" class="input" required />
+              </div>
+            </div>
+            <div class="field"><% if (messages.error) { %> <%= messages.error %> <% } %></div>
+            <div class="has-text-centered">
+              <div class="field">
+                <button class="button is-success">Login</button>
+              </div>
+              <small>Don't have an account? <a href="/register">Register</a></small>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<%- include('templates/footer.ejs')%>

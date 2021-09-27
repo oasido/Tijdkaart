@@ -1,0 +1,91 @@
+<%- include('templates/header.ejs')%> <%- include('templates/navbar.ejs')%>
+
+<div class="container">
+  <article class="message is-dark">
+    <div class="message-body">
+      Hoi, <strong><%= username.username %>!</strong>
+      <div class="columns">
+        <% let totalDuration = 0 %>
+        <% for( let i = 0; i < shifts.length; i++ ) { %>
+          <% let startTime = moment(shifts[i].startTime, 'DD/MM/YYYY HH:mm'); %>
+          <% let endTime = moment(shifts[i].endTime, 'DD/MM/YYYY HH:mm'); %>
+          <% let duration = parseInt(endTime.diff(startTime, 'minutes')); %>
+          <% totalDuration += duration %>
+        <% } %>
+        <div class="column"><strong>Total hours: </strong><%= (Math.floor(totalDuration / 60) + ' hr, ' + totalDuration % 60) + " min." %></div>
+        <div class="column"><strong>Total shifts: </strong><%= shifts.length %></div>
+        <div class="column"><strong>Total earned: </strong>₪</div>
+      </div>
+    </div>
+  </article>
+
+  <div class="panel is-dark">
+    <% let monthName = moment().format('YYYY MMMM'); %>
+    <p class="panel-heading"><%= monthName %> Logs</p>
+    <div class="panel-block">
+      <table class="table is-fullwidth is-hoverable has-text-centered">
+        <thead>
+          <th>Date</th>
+          <th>Shift Start</th>
+          <th>Shift End</th>
+          <th>Total Time</th>
+          <th>₪</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <%- include('table.ejs') %>
+        </tbody>
+      </table>
+      <div class="has-text-right">
+        <button id="add-btn" type="button" class="button is-success">Add Shift</button>
+      </div>
+    </div>
+    <!-- Add Modal -->
+    <div id="add-modal" class="modal">
+      <form action="/add" method="post">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Add Shift</p>
+            <button type="button" class="delete" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body">
+            <label class="label">Timespan</label>
+            <input class="input time" type="text" id="time-add" name="time" />
+            <label class="label mt-5">Comment(s)</label>
+            <textarea class="textarea" name="comment"></textarea>
+            <div class="has-text-right"><small>Optional</small></div>
+          </section>
+          <footer class="modal-card-foot">
+            <button type="submit" class="button is-success">Save</button>
+            <button type="button" id="cancel-btn" class="button">Cancel</button>
+          </footer>
+        </div>
+      </form>
+    </div>
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="edit-modal modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Edit Shift</p>
+          <button type="button" class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <label class="label">Timespan</label>
+          <input class="input" type="text" name="time" id="time-edit" />
+          <label class="label mt-5">Comment(s)</label>
+          <textarea class="textarea" id="comment" name="comment"></textarea>
+          <div class="has-text-right"><small>Optional</small></div>
+        </section>
+        <footer class="modal-card-foot">
+          <button type="submit" id="submit-edit" class="button is-success">Save</button>
+          <button type="button" id="cancel-btn" class="button">Cancel</button>
+          <button id="submit-delete" class="has-text-danger button is-text is-size-7">Delete</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('templates/footer.ejs') %>
