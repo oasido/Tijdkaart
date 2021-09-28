@@ -18,6 +18,10 @@ const Shift = new Schema({
     type: String,
     required: false,
   },
+  pay: {
+    type: Number,
+    required: false,
+  },
 });
 
 module.exports = mongoose.model('Shift', Shift);

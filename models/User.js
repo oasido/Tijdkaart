@@ -11,6 +11,10 @@ const User = new Schema({
     type: String,
     required: false,
   },
+  pay: {
+    type: Number,
+    required: false,
+  },
 });
 
 User.plugin(passportLocalMongoose);
