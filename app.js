@@ -123,7 +123,7 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
 
 app.post('/register', function (req, res, next) {
   console.log('registering user');
-  User.register(new User({ username: req.body.username, email: req.body.email }), req.body.password, function (err) {
+  User.register(new User({ username: req.body.username, email: req.body.email, pay: req.body.pay }), req.body.password, function (err) {
     if (err) {
       console.log('error while user register!', err);
       return next(err);
