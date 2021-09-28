@@ -61,11 +61,7 @@ app.get('/', checkAuthenticated, async (req, res) => {
     const currentMonth = '/' + (moment().month() + 1).toString().padStart(2, '0') + '/';
     let shifts = await Shift.find({ by: uid, startTime: { $regex: currentMonth } }).sort({ startTime: 'asc' });
 
-    if (shifts.length == 0) {
-      res.render('index', { moment, username: req.user, shifts: 'empty' });
-    } else {
       res.render('index', { moment, username: req.user, shifts });
-    }
   } catch (error) {
     console.log(error);
   }
