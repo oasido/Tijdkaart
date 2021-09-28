@@ -67,6 +67,19 @@ app.get('/', checkAuthenticated, async (req, res) => {
   }
 });
 
+app.get('/settings', checkAuthenticated, (req, res) => {
+  res.render('settings', { username: req.user });
+});
+
+app.post('/settings', checkAuthenticated, async (req, res) => {
+  const uid = req.user._id;
+  const email = req.body.email;
+  const pay = req.body.pay;
+  const accountUpdate = await User.findByIdAndUpdate({ _id: uid }, { email, pay });
+  req.flash('info', 'Updated succesfuly!');
+  await res.redirect('/settings');
+});
+
 app.get('/add', checkAuthenticated, (req, res) => {
   res.redirect('/');
 });

@@ -1,0 +1,30 @@
+<%- include('templates/header.ejs')%> <%- include('templates/navbar.ejs')%>
+
+<div class="container mt-6">
+  <article class="message is-dark">
+    <div class="message-body">
+      Hoi, <strong><%= username.username %>!</strong>
+      <p>You can edit your account settings here.</p>
+    </div>
+  </article>
+
+  <div class="container">
+    <h1 class="is-size-3">Account Options</h1>
+    <div class="column is-3-tablet is-3-desktop is-3-widescreen">
+      <form action="/settings" method="post">
+        <div class="field">
+          <label class="label" for="pay">Email Address</label>
+          <input required id="email" class="input" name="email" placeholder="aye123@domain.com" type="email" value="<%= username.email %>" />
+        </div>
+        <div class="field">
+          <label class="label" for="pay">Pay (per hour, in ILS)</label>
+          <input required id="pay" class="input" name="pay" placeholder="Minimum wage: 29.12₪" type="number" step="0.01" value="<%= username.pay %>" />
+        </div>
+        <button type="submit" class="button is-success">Save</button>
+        <p class="has-text-success p-1 is-underlined has-text-weight-bold"><%= (locals.messages.info) %></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('templates/footer.ejs') %>
