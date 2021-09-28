@@ -88,9 +88,9 @@ app.post('/add', checkAuthenticated, async (req, res) => {
   const time = req.body.time;
   const uid = req.user.id;
   const comment = req.body.comment;
+  const userDocument = await User.findById(uid);
   let timeSplit = time.split(' - ');
-  console.log(uid);
-  const shift = await Shift.create({ by: uid, startTime: timeSplit[0], endTime: timeSplit[1], comment });
+  const shift = await Shift.create({ by: uid, startTime: timeSplit[0], endTime: timeSplit[1], comment, pay: userDocument.pay });
   res.redirect('/');
 });
 
