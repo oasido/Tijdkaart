@@ -17,13 +17,14 @@
   <% let by = shifts[i].by; %>
   <% let comment = shifts[i].comment; %>
   <% let duration = endTime.diff(startTime, 'minutes'); %>
+  <% let pay = shifts[i].pay * (duration / 60) %>
   
   <tr>
     <td class="data-table"><strong><%= date %></strong></td>
     <td class="data-table"><%= shifts[i].startTime.slice(11) %></td>
     <td class="data-table"><%= shifts[i].endTime.slice(11) %></td>
     <td class="data-table"><%= (Math.floor(duration / 60) + ':' + duration % 60) %></td>
-    <td class="data-table">TBA</td>
+    <td class="data-table"><%= pay.toFixed(2) %></td>
     <td>
       <button data-comment="<%= comment %>" data-id="<%= shifts[i].id %>" type="button" class="button is-small is-rounded">Edit</button>
       <% if (comment) { %>
