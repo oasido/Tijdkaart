@@ -1,14 +1,8 @@
 // TODO:
-// X add in DB after post
 // - Cleanup
-// - Seperate routes folder
 // - Add comments
-// - Make it so that letter cases won't matter in username
-// X Figure out how to set up times into DB
-// - Instal MONGODB locally
-// X https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
-// X https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-// - how to join between two models, mongoose
+// - Seperate routes folder
+// - Check Firefox compatability
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
