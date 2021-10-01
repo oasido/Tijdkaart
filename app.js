@@ -74,6 +74,33 @@ app.post('/settings', checkAuthenticated, async (req, res) => {
   await res.redirect('/settings');
 });
 
+app.get('/history', checkAuthenticated, (req, res) => {
+  res.render('history', { moment, username: req.user, shifts: '', hide: 'is-hidden' });
+});
+
+app.post('/history', checkAuthenticated, async (req, res) => {
+  const uid = req.user.id;
+  const daterange = req.body.daterange;
+  const daterangeArr = daterange.split('-');
+  const dateName = moment(daterange).format('YYYY MMMM');
+  let shifts = await Shift.find({ by: uid, startTime: { $regex: daterangeArr[1] + '/' + daterangeArr[0] } }).sort({ startTime: 'asc' });
+  res.render('history', { moment, username: req.user, shifts, dateName });
+});
+
+app.get('/history/:year/:month', checkAuthenticated, async (req, res) => {
+  const uid = req.user.id;
+  const year = req.params.year;
+  const month = req.params.month;
+  const daterange = year + '-' + month;
+  const dateName = moment(daterange).format('YYYY MMMM');
+  let shifts = await Shift.find({ by: uid, startTime: { $regex: month + '/' + year } }).sort({ startTime: 'asc' });
+  res.render('history', { moment, username: req.user, shifts, dateName });
+});
+
+app.get('/about', checkAuthenticated, (req, res) => {
+  res.render('about');
+});
+
 app.get('/add', checkAuthenticated, (req, res) => {
   res.redirect('/');
 });
