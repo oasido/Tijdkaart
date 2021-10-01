@@ -17,7 +17,7 @@
   <% let by = shifts[i].by; %>
   <% let comment = shifts[i].comment; %>
   <% let duration = endTime.diff(startTime, 'minutes'); %>
-  <% let pay = shifts[i].pay * (duration / 60) %>
+  <% let pay = shifts[i].pay * (duration / 60) || 0 %>
   
   <tr>
     <td class="data-table"><strong><%= date %></strong></td>
