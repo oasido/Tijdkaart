@@ -2,10 +2,6 @@ html {
   background-color: #f0f5f9;
 }
 
-/* .panel .panel-heading {
-  background-color: #c9d6df;
-} */
-
 .panel-block {
   flex-direction: column;
   align-items: flex-end;
