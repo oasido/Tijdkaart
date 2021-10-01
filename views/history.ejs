@@ -1,0 +1,54 @@
+<%- include('templates/header.ejs')%> <%- include('templates/navbar.ejs')%>
+
+<div class="container">
+  <div class="container">
+    <h1 class="is-size-3">History</h1>
+    <div class="column is-3-tablet is-3-desktop is-3-widescreen">
+      <form action="/history" method="post">
+        <div class="field">
+          <label class="label" for="pay">Select month</label>
+          <input required type="month" name="daterange" id="daterange" class="input date-picker" />
+        </div>
+        <button type="submit" id="history_search_button" class="button is-info">Search</button>
+        <p class="has-text-success p-1 is-underlined has-text-weight-bold"><%= (locals.messages.info) %></p>
+      </form>
+    </div>
+
+    <article class="message is-dark <%= locals.hide %>">
+      <div class="message-body">
+        <div class="columns">
+          <% let totalDuration = 0 %> <% let totalEarned = 0 %> <% for( let i = 0; i < shifts.length; i++ ) { %> <% let startTime = moment(shifts[i].startTime, 'DD/MM/YYYY HH:mm');
+          %> <% let endTime = moment(shifts[i].endTime, 'DD/MM/YYYY HH:mm'); %> <% let duration = parseInt(endTime.diff(startTime, 'minutes')); %> <% totalDuration += duration %>
+          <% totalEarned += (shifts[i].pay * (duration / 60)) %> <% } %>
+          <div class="column"><strong>Total hours: </strong><%= (Math.floor(totalDuration / 60) + ' hr, ' + totalDuration % 60) + " min." %></div>
+          <div class="column"><strong>Total shifts: </strong><%= shifts.length %></div>
+          <div class="column"><strong>Total earned: </strong><%= totalEarned.toFixed(2) %>₪</div>
+        </div>
+      </div>
+    </article>
+    <div class="panel is-dark <%= locals.hide %>">
+      <p class="panel-heading"><%= locals.dateName %> Logs</p>
+      <div class="panel-block">
+        <table class="table is-fullwidth is-hoverable has-text-centered">
+          <thead>
+            <th>Date</th>
+            <th>Shift Start</th>
+            <th>Shift End</th>
+            <th>Total Time</th>
+            <th>₪</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <%- include('table.ejs') %>
+          </tbody>
+        </table>
+        <div class="has-text-right">
+          <button id="add-btn" type="button" class="button is-success">Add Shift</button>
+        </div>
+        <%- include('modals.ejs') %>
+      </div>
+    </div>
+  </div>
+
+  <%- include('templates/footer.ejs') %>
+</div>
