@@ -5,7 +5,7 @@ $(document).ready(function () {
     timePicker24Hour: true,
     parentEl: '.modal-body',
     timePickerIncrement: 5,
-    startDate: moment().hour(7).minute(20).second(0),
+    startDate: moment().hour(7).minute(30).second(0),
     endDate: moment().hour(16).minute(45).second(0),
     opens: 'center',
     locale: {
