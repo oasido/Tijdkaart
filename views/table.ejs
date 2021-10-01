@@ -1,5 +1,5 @@
 <% let totalDuration = 0; %>
-<% if (shifts.length === 0) { %>
+<% if (locals.shifts.length === 0) { %>
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
@@ -10,7 +10,7 @@
   </tr>
 <% } else { %>
 
-<% for( let i = 0; i < shifts.length; i++ ) { %>
+<% for( let i = 0; i < locals.shifts.length; i++ ) { %>
   <% let date = shifts[i].startTime.slice(0,5); %>
   <% let startTime = moment(shifts[i].startTime, 'DD/MM/YYYY HH:mm'); %>
   <% let endTime = moment(shifts[i].endTime, 'DD/MM/YYYY HH:mm'); %>
