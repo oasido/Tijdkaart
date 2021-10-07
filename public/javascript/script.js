@@ -88,7 +88,6 @@ $(document).ready(function () {
     if (confirmation) {
       fetch('/delete', options);
       $('#edit-modal').removeClass('is-active');
-      location.reload();
     }
   });
 

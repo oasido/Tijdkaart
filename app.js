@@ -122,6 +122,7 @@ app.get('/edit', checkAuthenticated, (req, res) => {
 app.post('/edit', checkAuthenticated, async (req, res) => {
   const shiftData = req.body;
   const shiftUpdate = await Shift.findByIdAndUpdate({ _id: shiftData.shiftsID }, { startTime: shiftData.startTime, endTime: shiftData.endTime, comment: shiftData.comment });
+  res.redirect('/');
 });
 
 app.get('/delete', checkAuthenticated, (req, res) => {
