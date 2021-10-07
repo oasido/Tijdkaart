@@ -7,7 +7,7 @@
       <form action="/history" method="post">
         <div class="field">
           <label class="label" for="pay">Select month</label>
-          <input required type="month" name="daterange" id="daterange" class="input date-picker" />
+          <input required type="text" name="daterange" id="daterange" class="input date-picker is-inline" />
         </div>
         <button type="submit" id="history_search_button" class="button is-info">Search</button>
         <p class="has-text-success p-1 is-underlined has-text-weight-bold"><%= (locals.messages.info) %></p>
