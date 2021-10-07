@@ -17,6 +17,10 @@ html {
   max-height: unset;
 }
 
+.pen {
+  position: absolute;
+}
+
 /* Mobile compatability */
 @media only screen and (hover: none) and (pointer: coarse) {
   /* TBA */
