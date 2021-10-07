@@ -17,9 +17,14 @@
     <article class="message is-dark <%= locals.hide %>">
       <div class="message-body">
         <div class="columns">
-          <% let totalDuration = 0 %> <% let totalEarned = 0 %> <% for( let i = 0; i < shifts.length; i++ ) { %> <% let startTime = moment(shifts[i].startTime, 'DD/MM/YYYY HH:mm');
-          %> <% let endTime = moment(shifts[i].endTime, 'DD/MM/YYYY HH:mm'); %> <% let duration = parseInt(endTime.diff(startTime, 'minutes')); %> <% totalDuration += duration %>
-          <% totalEarned += (shifts[i].pay * (duration / 60)) %> <% } %>
+          <% let totalDuration = 0 %>
+          <% let totalEarned = 0 %>
+          <% for( let i = 0; i < shifts.length; i++ ) { %>
+            <% let startTime = moment(shifts[i].startTime, 'DD/MM/YYYY HH:mm'); %>
+            <% let endTime = moment(shifts[i].endTime, 'DD/MM/YYYY HH:mm'); %>
+            <% let duration = parseInt(endTime.diff(startTime, 'minutes')); %> <% totalDuration += duration %>
+            <% totalEarned += (shifts[i].pay * (duration / 60)) | 0 %>
+          <% } %>
           <div class="column"><strong>Total hours: </strong><%= (Math.floor(totalDuration / 60) + ' hr, ' + totalDuration % 60) + " min." %></div>
           <div class="column"><strong>Total shifts: </strong><%= shifts.length %></div>
           <div class="column"><strong>Total earned: </strong><%= totalEarned.toFixed(2) %>₪</div>
