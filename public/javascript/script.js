@@ -95,4 +95,10 @@ $(document).ready(function () {
   $(document).on('keyup', function (e) {
     if (e.key == 'Escape') $('#edit-modal, #add-modal').removeClass('is-active');
   });
+
+  // jQuery month picker
+  $('#daterange').MonthPicker({
+    Button: '<button type="button" class="button ui-datepicker-trigger">📅</button>',
+    MonthFormat: 'yy-mm',
+  });
 });
