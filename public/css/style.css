@@ -16,3 +16,8 @@ html {
 .navbar-item img {
   max-height: unset;
 }
+
+/* Mobile compatability */
+@media only screen and (hover: none) and (pointer: coarse) {
+  /* TBA */
+}
