@@ -12,7 +12,7 @@
           <% let endTime = moment(shifts[i].endTime, 'DD/MM/YYYY HH:mm'); %>
           <% let duration = parseInt(endTime.diff(startTime, 'minutes')); %>
           <% totalDuration += duration %>
-          <% totalEarned += (shifts[i].pay * (duration / 60)) %>
+          <% totalEarned += (shifts[i].pay * (duration / 60)) | 0 %>
         <% } %>
         <div class="column"><strong>Total hours: </strong><%= (Math.floor(totalDuration / 60) + ' hr, ' + totalDuration % 60) + " min." %></div>
         <div class="column"><strong>Total shifts: </strong><%= shifts.length %></div>
