@@ -1,25 +1,23 @@
 <!-- Add Modal -->
 <div id="add-modal" class="modal">
-  <form action="/add" method="post">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Add Shift</p>
-        <button type="button" class="delete" aria-label="close"></button>
-      </header>
-      <section class="modal-card-body">
-        <label class="label">Timespan</label>
-        <input class="input time" type="text" id="time-add" name="time" />
-        <label class="label mt-5">Comment(s)</label>
-        <textarea class="textarea" name="comment"></textarea>
-        <div class="has-text-right"><small>Optional</small></div>
-      </section>
-      <footer class="modal-card-foot">
-        <button type="submit" class="button is-success">Save</button>
-        <button type="button" id="cancel-btn" class="button">Cancel</button>
-      </footer>
-    </div>
-  </form>
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Add Shift</p>
+      <button type="button" class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <label class="label">Timespan</label>
+      <input class="input time" type="text" id="time-add" name="time-add" />
+      <label class="label mt-5">Comment(s)</label>
+      <textarea class="textarea" id="comment-add" name="comment-add"></textarea>
+      <div class="has-text-right"><small>Optional</small></div>
+    </section>
+    <footer class="modal-card-foot">
+      <button type="submit" id="submit-add" class="button is-success">Save</button>
+      <button type="button" id="cancel-btn" class="button">Cancel</button>
+    </footer>
+  </div>
 </div>
 <!-- Edit Modal -->
 <div id="edit-modal" class="modal">
@@ -31,9 +29,9 @@
     </header>
     <section class="modal-card-body">
       <label class="label">Timespan</label>
-      <input class="input" type="text" name="time" id="time-edit" />
+      <input class="input" type="text" name="time-edit" id="time-edit" />
       <label class="label mt-5">Comment(s)</label>
-      <textarea class="textarea" id="comment" name="comment"></textarea>
+      <textarea class="textarea" id="comment-edit" name="comment-edit"></textarea>
       <div class="has-text-right"><small>Optional</small></div>
     </section>
     <footer class="modal-card-foot">
