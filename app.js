@@ -130,8 +130,13 @@ app.get('/delete', checkAuthenticated, (req, res) => {
 });
 
 app.post('/delete', checkAuthenticated, async (req, res) => {
-  const shiftData = req.body;
-  const shiftDelete = await Shift.findByIdAndDelete({ _id: shiftData.shiftsID });
+  try {
+    const shiftData = req.body;
+    const shiftDelete = await Shift.findByIdAndDelete({ _id: shiftData.shiftsID });
+    console.log('test');
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 app.post('/logout', (req, res) => {
