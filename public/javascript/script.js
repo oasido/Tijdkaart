@@ -71,7 +71,9 @@ $(document).ready(function () {
     };
     fetch('/edit', options);
     $('#edit-modal').removeClass('is-active');
-    location.reload();
+    setTimeout(() => {
+      location.reload();
+    }, 50);
   });
 
   // Delete shift button using fetch()
@@ -88,6 +90,9 @@ $(document).ready(function () {
     if (confirmation) {
       fetch('/delete', options);
       $('#edit-modal').removeClass('is-active');
+      setTimeout(() => {
+        location.reload();
+      }, 50);
     }
   });
 
