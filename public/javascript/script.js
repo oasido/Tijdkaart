@@ -103,7 +103,7 @@ $(document).ready(function () {
 
   // jQuery month picker
   $('#daterange').MonthPicker({
-    Button: '<button type="button" class="button ui-datepicker-trigger">📅</button>',
+    Button: "<div class='control'><a class='button is-grey'>📅</a></div>",
     MonthFormat: 'yy-mm',
   });
 });
