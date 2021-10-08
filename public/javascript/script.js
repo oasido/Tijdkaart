@@ -48,7 +48,7 @@ $(document).ready(function () {
 
     // Insert data
     $('#time-edit').val(`${startTime} - ${endTime}`);
-    $('#comment').val(comment);
+    $('#comment-edit').val(comment);
     $('#edit-modal').addClass('is-active');
   });
 
@@ -57,10 +57,29 @@ $(document).ready(function () {
     $('#edit-modal').removeClass('is-active');
   });
 
+  // Add Modal post using fetch()
+  $('#submit-add').on('click', function () {
+    const timeSplit = $('#time-add').val().split(' - ');
+    comment = $('#comment-add').val();
+    const shiftData = { startTime: timeSplit[0], endTime: timeSplit[1], comment };
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(shiftData),
+    };
+    fetch('/add', options);
+    $('#add-modal').removeClass('is-active');
+    setTimeout(() => {
+      location.reload();
+    }, 50);
+  });
+
   // Edit Modal post using fetch()
   $('#submit-edit').on('click', function () {
     const timeSplit = $('#time-edit').val().split(' - ');
-    comment = $('#comment').val();
+    comment = $('#comment-edit').val();
     const shiftData = { shiftsID, startTime: timeSplit[0], endTime: timeSplit[1], comment };
     const options = {
       method: 'POST',
