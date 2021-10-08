@@ -5,10 +5,10 @@
     <h1 class="is-size-3">History</h1>
     <div class="column is-3-tablet is-3-desktop is-3-widescreen">
       <form action="/history" method="post">
-        <div class="field">
-          <label class="label" for="pay">Select month</label>
-          <input required type="text" name="daterange" id="daterange" class="input date-picker is-inline" />
-        </div>
+        <label class="label" for="daterange">Select month</label>
+          <div class="field has-addons">
+              <input required type="text" name="daterange" id="daterange" class="input date-picker is-inline" placeholder="yyyy-mm" />
+          </div>
         <button type="submit" id="history_search_button" class="button is-info">Search</button>
         <p class="has-text-success p-1 is-underlined has-text-weight-bold"><%= (locals.messages.info) %></p>
       </form>
