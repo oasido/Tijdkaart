@@ -4,8 +4,8 @@
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td class="hide-on-low-res">&nbsp;</td>
+    <td class="hide-on-low-res">&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
 <% } else { %>
@@ -23,8 +23,8 @@
     <td class="data-table"><strong><%= date %></strong></td>
     <td class="data-table"><%= shifts[i].startTime.slice(11) %></td>
     <td class="data-table"><%= shifts[i].endTime.slice(11) %></td>
-    <td class="data-table"><%= (Math.floor(duration / 60) + ':' + duration % 60) %></td>
-    <td class="data-table"><%= pay.toFixed(2) %></td>
+    <td class="data-table hide-on-low-res"><%= (Math.floor(duration / 60) + ':' + duration % 60) %></td>
+    <td class="data-table hide-on-low-res"><%= pay.toFixed(2) %></td>
     <td>
       <button data-comment="<%= comment %>" data-id="<%= shifts[i].id %>" type="button" class="button is-small is-rounded">Edit</button>
       <% if (comment) { %>

@@ -23,5 +23,7 @@ html {
 
 /* Mobile compatability */
 @media only screen and (hover: none) and (pointer: coarse) {
-  /* TBA */
+  .hide-on-low-res {
+    display: none;
+  }
 }
